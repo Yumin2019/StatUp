@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">StatUp</string>
+
+    // items
+    <string name="str_home">Home</string>
+    <string name="str_graph">Graph</string>
+    <string name="str_achievement">Achievement</string>
+
+    // val str_stat_name : String = "",
+    // val str_level : String = "",
+    // val str_main_stat : String = "",
+    // val level : Int = 1,
+    // val cur_exp_value : Int = 1,
+    // val max_exp_value : Int = 10
+    <string name="str_stat_name">Title</string>
+    <string name="str_level">Level</string>
+    <string name="str_main_stat">Main Stat</string>
+    <string name="str_memo">Memo</string>
+    <string name="str_up">▲</string>
+    <string name="str_down">▼</string>
+    <string name="str_exp">Exp 5/10</string>
+    <string name="str_description">Description</string>
+    <string name="str_customizing">Customizing</string>
+    <string name="str_button_color">Color of buttons</string>
+    <string name="str_progress_color">Color of this progressbar</string>
+
+    <string name="normal_initial_level">1</string>
+    <string name="normal_final_level">100</string>
+
+    // Game Stat
+    // Health Point HP, Mana Point MP, Experience EXP, Strength STR, Intelligence INT, Luck LUK, Wisdom WIS, ETC
+    <string name="str_stat_HP">HP</string>
+    <string name="str_stat_MP">MP</string>
+    <string name="str_stat_EXP">EXP</string>
+    <string name="str_stat_STR">STR</string>
+    <string name="str_stat_INT">INT</string>
+    <string name="str_stat_LUK">LUK</string>
+    <string name="str_stat_WIS">WIS</string>
+    <string name="str_stat_ETC">ETC</string>
+
+    <string name="str_stat_HealthPoint">Health Point</string>
+    <string name="str_stat_ManaPoint">Mana Point</string>
+    <string name="str_stat_Experience">Experience</string>
+    <string name="str_stat_Strength">Strength</string>
+    <string name="str_stat_Intelligence">Intelligence</string>
+    <string name="str_stat_Luck">Luck</string>
+    <string name="str_stat_Wisdom">Wisdom</string>
+    <string name="str_stat_Etc.">etc.</string>
+
+    // hints
+    <string name="hint_min_level">input your initial level</string>
+    <string name="hint_max_level">input your final level</string>
+    <string name="hint_stat_name">input title</string>
+    <string name="hint_description">describe your goal simply</string>
+    <string name="hint_bar_size">input the size of the progress</string>
+    <string name="hint_button_custom">select the color of these buttons</string>
+    <string name="hint_progress_custom">select the color of the progress</string>
+
+    <string name="str_add_stat_item">Add Stat</string>
+    <string name="str_add">ADD</string>
+
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/recycler_item_margin"
+    android:layout_marginTop="@dimen/recycler_item_margin"
+    android:layout_marginEnd="@dimen/recycler_item_margin"
+    android:background="@drawable/button_rectangle_style">
+
+    <TextView
+        android:id="@+id/stat_name_view"
+        style="@style/text_big_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:text="@string/str_stat_name"
+        app:layout_constraintEnd_toStartOf="@+id/initial_level_edit_text"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="@dimen/view_max_width"/>
+
+    <TextView
+        android:id="@+id/initial_level_edit_text"
+        style="@style/text_normal_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:text="@string/str_level"
+        app:layout_constraintBottom_toBottomOf="@+id/stat_name_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@+id/stat_name_view"
+        app:layout_constraintTop_toTopOf="@+id/stat_name_view"
+        app:layout_constraintWidth_max="@dimen/view_max_width" />
+
+
+    /*
+    android:progressBackgroundTint="@color/black"
+    android:progressTint="@color/teal_200"
+    android:progress="50"
+    */
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:progress="50"
+        android:progressBackgroundTint="@color/black"
+        android:progressTint="@color/purple_200"
+        android:scaleY="3"
+        app:layout_constraintBottom_toBottomOf="@+id/exp_value_view"
+        app:layout_constraintEnd_toStartOf="@+id/exp_value_view"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/stat_name_view"
+        app:layout_constraintTop_toTopOf="@+id/exp_value_view"
+        app:layout_constraintWidth_max="@dimen/view_max_width" />
+
+    <TextView
+        android:id="@+id/exp_value_view"
+        style="@style/text_normal_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:text="@string/str_exp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/initial_level_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/stat_name_view" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

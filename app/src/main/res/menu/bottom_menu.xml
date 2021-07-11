@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/str_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/item_home"
+    />
+
+    <item
+        android:title="@string/str_graph"
+        android:icon="@drawable/ic_baseline_bar_chart_24"
+        android:id="@+id/item_graph"
+        />
+
+    <item
+        android:title="@string/str_achievement"
+        android:icon="@drawable/ic_baseline_achievement_24"
+        android:id="@+id/item_achievement"
+        />
+
+</menu>
+
+

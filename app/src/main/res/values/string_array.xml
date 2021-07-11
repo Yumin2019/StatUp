@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_stat_array">
+        <item>Heath Point</item>
+        <item>Mana Point</item>
+        <item>Strength</item>
+        <item>Intelligence</item>
+        <item>Luck</item>
+        <item>Wisdom</item>
+        <item>Experience</item>
+        <item>etc.</item>
+    </string-array>
+</resources>

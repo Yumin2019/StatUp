@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_size">14sp</dimen>
+    <dimen name="normal_size">22sp</dimen>
+    <dimen name="big_size">24sp</dimen>
+
+    <dimen name="normal_margin">8dp</dimen>
+    <dimen name="big_margin">24dp</dimen>
+    <dimen name="recycler_item_margin">16dp</dimen>
+
+    <dimen name="exp_button_size">40sp</dimen>
+    <dimen name="arrow_button_size">30sp</dimen>
+    <dimen name="add_button_size">70dp</dimen>
+    <dimen name="add_item_text_view_height">90dp</dimen>
+    <dimen name="add_item_text_view_width">35dp</dimen>
+    <dimen name="view_max_width">500dp</dimen>
+    <dimen name="edit_text_max_width">210dp</dimen>
+    <dimen name="edit_text_view_height">30dp</dimen>
+    <dimen name="edit_text_horizontal_margin">30dp</dimen>
+    <dimen name="color_item_margin">12dp</dimen>
+</resources>
