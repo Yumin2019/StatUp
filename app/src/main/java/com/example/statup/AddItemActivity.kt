@@ -3,6 +3,8 @@ package com.example.statup
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -10,6 +12,7 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginBottom
 import androidx.core.view.marginEnd
+import androidx.core.widget.addTextChangedListener
 
 class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 {
@@ -28,6 +31,8 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     lateinit var initial_level_edit_text : EditText
     lateinit var final_level_edit_text : EditText
     lateinit var description_edit_text : EditText
+    lateinit var initial_level_text_view : TextView
+    lateinit var final_level_text_view : TextView
     lateinit var button_color_list_view : View
     lateinit var progressbar_color_list_view : View
     lateinit var item_add_button : Button
@@ -56,6 +61,8 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         item_add_button  = findViewById(R.id.item_add_button)
         button_color_selector = findViewById(R.id.button_color_selector_image_view)
         progressbar_color_selector = findViewById(R.id.progressbar_color_selector_image_view)
+        initial_level_text_view = findViewById(R.id.initial_level_text_view)
+        final_level_text_view = findViewById(R.id.final_level_text_view)
 
         // input Method Manager
         inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -69,7 +76,27 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             COLOR_ITEM_SIZE /= COLOR_ITEM_COUNT
         }
 
+        initial_level_text_view.setOnClickListener {
+            initial_level_edit_text.requestFocus()
+            inputMethodManager.showSoftInput(initial_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+        }
 
+        final_level_text_view.setOnClickListener {
+            final_level_edit_text.requestFocus()
+            inputMethodManager.showSoftInput(final_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        initial_level_edit_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {  initial_level_text_view.setText(s.toString()) }
+        })
+
+        final_level_edit_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {  final_level_text_view.setText(s.toString()) }
+        })
 
         // customizing_layout's onTouch func (in this we calculate what kind of color people select)
         val view : View = findViewById(R.id.customizing_layout)

@@ -48,8 +48,8 @@
     <string name="str_stat_Etc.">etc.</string>
 
     // hints
-    <string name="hint_min_level">input your initial level</string>
-    <string name="hint_max_level">input your final level</string>
+    <string name="hint_min_level">input initial level (1)</string>
+    <string name="hint_max_level">input final level (100)</string>
     <string name="hint_stat_name">input title</string>
     <string name="hint_description">describe your goal simply</string>
     <string name="hint_bar_size">input the size of the progress</string>
