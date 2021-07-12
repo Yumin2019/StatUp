@@ -496,7 +496,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.30149254" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/line_horizontal_010"
@@ -536,6 +536,46 @@
             app:layout_constraintStart_toStartOf="@+id/line_vertical_035"
             app:layout_constraintTop_toBottomOf="@+id/initial_level_text_view"
             app:layout_constraintWidth_max="@dimen/edit_text_max_width" />
+
+        <ImageView
+            android:id="@+id/title_cross_button"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/title_edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/title_edit_text"
+            app:layout_constraintTop_toTopOf="@+id/title_edit_text"
+            app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+        <ImageView
+            android:id="@+id/final_level_cross_button"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/final_level_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/final_level_text_view"
+            app:layout_constraintTop_toTopOf="@+id/final_level_text_view"
+            app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+        <ImageView
+            android:id="@+id/initial_level_cross_button"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/initial_level_text_view"
+            app:layout_constraintEnd_toEndOf="@+id/initial_level_text_view"
+            app:layout_constraintTop_toTopOf="@+id/initial_level_text_view"
+            app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+        <ImageView
+            android:id="@+id/description_cross_button"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="@+id/description_edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/description_edit_text"
+            app:layout_constraintTop_toTopOf="@+id/description_edit_text"
+            app:srcCompat="@drawable/ic_baseline_clear_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

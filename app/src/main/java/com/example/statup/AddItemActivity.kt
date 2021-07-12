@@ -40,6 +40,11 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     lateinit var progressbar_color_selector : ImageView
     lateinit var inputMethodManager : InputMethodManager
 
+    lateinit var title_cross_button : ImageView
+    lateinit var initial_cross_button : ImageView
+    lateinit var final_cross_button : ImageView
+    lateinit var description_cross_button : ImageView
+
     var button_color_index : Int = 8
     var progressbar_color_index : Int = 8
 
@@ -63,6 +68,25 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         progressbar_color_selector = findViewById(R.id.progressbar_color_selector_image_view)
         initial_level_text_view = findViewById(R.id.initial_level_text_view)
         final_level_text_view = findViewById(R.id.final_level_text_view)
+
+        title_cross_button = findViewById(R.id.title_cross_button)
+        initial_cross_button = findViewById(R.id.initial_level_cross_button)
+        final_cross_button = findViewById(R.id.final_level_cross_button)
+        description_cross_button = findViewById(R.id.description_cross_button)
+
+
+        title_cross_button.setOnClickListener {
+            title_edit_text.setText("")
+        }
+        initial_cross_button.setOnClickListener {
+            initial_level_edit_text.setText("")
+        }
+        final_cross_button.setOnClickListener {
+            final_level_edit_text.setText("")
+        }
+        description_cross_button.setOnClickListener {
+            description_edit_text.setText("")
+        }
 
         // input Method Manager
         inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -162,7 +186,7 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
 
         item_add_button.setOnClickListener {
-
+            //
         }
 
         // spinner for down list
@@ -201,7 +225,7 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         {
             // if keyboard's used and touch other editText it's not touchEvent
             inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-
+            currentFocus?.clearFocus()
         }
 
         return super.onTouchEvent(event)
