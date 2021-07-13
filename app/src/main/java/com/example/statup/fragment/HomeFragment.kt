@@ -15,6 +15,7 @@ import com.example.statup.AddItemActivity
 import com.example.statup.R
 import com.example.statup.module.RecyclerViewAdapter
 import com.example.statup.module.StatItem
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class HomeFragment : Fragment()
@@ -28,7 +29,7 @@ class HomeFragment : Fragment()
     lateinit var layout_manager : LinearLayoutManager
     lateinit var recycler_view : RecyclerView
 
-    lateinit var add_button : ImageView
+    lateinit var add_button : FloatingActionButton
 
     // dataSet
     var stat_item_list : ArrayList<StatItem> = arrayListOf()

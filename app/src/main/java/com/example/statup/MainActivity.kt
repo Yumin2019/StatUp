@@ -1,11 +1,13 @@
 package com.example.statup
 
+import android.app.Activity
+import android.app.FragmentManager
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.statup.fragment.AchievementFragment
@@ -15,7 +17,7 @@ import com.example.statup.module.RecyclerViewAdapter
 import com.example.statup.module.StatItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity()
+class MainActivity : FragmentActivity()
 {
     lateinit var bottom_menu: BottomNavigationView
 

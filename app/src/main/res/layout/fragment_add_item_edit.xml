@@ -579,7 +579,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <android.widget.Button
         android:id="@+id/item_add_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

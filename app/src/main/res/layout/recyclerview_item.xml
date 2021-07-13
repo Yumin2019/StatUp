@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_weight="7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="@dimen/view_max_width"/>
+        app:layout_constraintWidth_max="@dimen/view_max_width" />
 
     <TextView
         android:id="@+id/initial_level_edit_text"

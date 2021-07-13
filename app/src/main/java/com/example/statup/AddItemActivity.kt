@@ -1,7 +1,7 @@
 package com.example.statup
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,11 +10,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginBottom
 import androidx.core.view.marginEnd
-import androidx.core.widget.addTextChangedListener
 
-class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
+class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 {
     companion object
     {
@@ -55,7 +53,7 @@ class AddItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_item)
+        setContentView(R.layout.fragment_add_item_edit)
 
         title_edit_text  = findViewById(R.id.title_edit_text)
         initial_level_edit_text  = findViewById(R.id.initial_level_edit_text)
