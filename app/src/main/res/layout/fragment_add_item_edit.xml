@@ -545,7 +545,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/title_edit_text"
             app:layout_constraintEnd_toEndOf="@+id/title_edit_text"
             app:layout_constraintTop_toTopOf="@+id/title_edit_text"
-            app:srcCompat="@drawable/ic_baseline_clear_24" />
+            android:src="@drawable/ic_baseline_clear_24" />
 
         <ImageView
             android:id="@+id/final_level_cross_button"
@@ -555,7 +555,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/final_level_text_view"
             app:layout_constraintEnd_toEndOf="@+id/final_level_text_view"
             app:layout_constraintTop_toTopOf="@+id/final_level_text_view"
-            app:srcCompat="@drawable/ic_baseline_clear_24" />
+            android:src="@drawable/ic_baseline_clear_24" />
 
         <ImageView
             android:id="@+id/initial_level_cross_button"
@@ -565,7 +565,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/initial_level_text_view"
             app:layout_constraintEnd_toEndOf="@+id/initial_level_text_view"
             app:layout_constraintTop_toTopOf="@+id/initial_level_text_view"
-            app:srcCompat="@drawable/ic_baseline_clear_24" />
+            android:src="@drawable/ic_baseline_clear_24" />
 
         <ImageView
             android:id="@+id/description_cross_button"
@@ -575,7 +575,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/description_edit_text"
             app:layout_constraintEnd_toEndOf="@+id/description_edit_text"
             app:layout_constraintTop_toTopOf="@+id/description_edit_text"
-            app:srcCompat="@drawable/ic_baseline_clear_24" />
+            android:src="@drawable/ic_baseline_clear_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
