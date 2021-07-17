@@ -51,12 +51,17 @@
     <string name="hint_min_level">initial level (1)</string>
     <string name="hint_max_level">final level (100)</string>
     <string name="hint_stat_name">input title</string>
-    <string name="hint_description">describe your goal</string>
+    <string name="hint_description">your goal</string>
     <string name="hint_bar_size">input the size of the progress</string>
     <string name="hint_button_custom">select the color of these buttons</string>
     <string name="hint_progress_custom">select the color of the progress</string>
 
-    <string name="str_add_stat_item">Add Stat</string>
+    <string name="str_info">Information</string>
     <string name="str_add">ADD</string>
+
+    <string name="str_preview">Preview</string>
+    <string name="str_plus">▲</string>
+    <string name="str_minus">▼</string>
+
 
 </resources>

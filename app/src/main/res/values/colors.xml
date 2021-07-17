@@ -10,6 +10,7 @@
 
     // background
     <color name="background_color">#D8D6D6</color>
+    <color name="preview_background_color">#7E57C2</color>
 
     // customizing
     <color name="custom_red">#FC8686</color>

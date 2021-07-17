@@ -61,8 +61,10 @@ class HomeFragment : Fragment()
                 R.anim.slide_in_right,
                 R.anim.slide_stop
             ).toBundle()
-            startActivityForResult(intent, ADD_ITEM_REQUEST, bundle)
 
+            // activity!!.overridePendingTransition(R.anim.slide_in_bottom,R.anim.slide_stop);
+            //fragmentManager?.beginTransaction()?.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_stop)
+            startActivityForResult(intent, ADD_ITEM_REQUEST, bundle)
         }
 
 

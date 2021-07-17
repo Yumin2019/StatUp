@@ -2,30 +2,117 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/custom_gray">
 
-    <fragment
-        android:id="@+id/preview_container"
-        android:name="com.example.statup.fragment.addItem.PreviewFragment"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/preview_fragment_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/preview_background_drawable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/recyclerview_item" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <fragment
-        android:id="@+id/add_item_edit_container"
-        android:name="com.example.statup.fragment.addItem.AddItemFragment"
+
+        <include
+            android:id="@+id/preview_include"
+            layout="@layout/recyclerview_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/preview_include"
+            app:layout_constraintStart_toStartOf="@+id/preview_include"
+            app:layout_constraintTop_toBottomOf="@+id/preview_include"
+            app:layout_constraintWidth_max="@dimen/view_max_width">
+
+
+            <TextView
+                android:id="@+id/preview_text_view"
+                style="@style/text_normal_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:text="@string/str_preview"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exp_up_image_view"
+                android:layout_width="@dimen/stat_point_button_size"
+                android:layout_height="@dimen/stat_point_button_size"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:background="@drawable/stat_point_button_normal_drawer"
+                android:gravity="clip_horizontal|center_horizontal"
+                android:text="@string/str_plus"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/exp_down_image_view"
+                app:layout_constraintEnd_toStartOf="@+id/exp_down_image_view"
+                app:layout_constraintTop_toTopOf="@+id/exp_down_image_view" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exp_down_image_view"
+                android:layout_width="@dimen/stat_point_button_size"
+                android:layout_height="@dimen/stat_point_button_size"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="@dimen/normal_margin"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/stat_point_button_normal_drawer"
+                android:gravity="clip_horizontal|center_horizontal"
+                android:text="@string/str_minus"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/edit_stat_fragment_scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preview_container"
-        tools:layout="@layout/fragment_add_item_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/preview_fragment_layout">
+
+        <include
+            android:id="@+id/add_item_edit_include"
+            layout="@layout/include_add_item_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/preview_container" />
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
