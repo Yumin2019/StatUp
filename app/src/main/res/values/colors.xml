@@ -13,9 +13,9 @@
     <color name="preview_background_color">#7E57C2</color>
 
     // customizing
-    <color name="custom_red">#FC8686</color>
-    <color name="custom_orange">#FF8A65</color>
-    <color name="custom_yellow">#FCF686</color>
+    <color name="custom_red">#FF0303</color>
+    <color name="custom_orange">#FF6E40</color>
+    <color name="custom_yellow">#FFEC1B</color>
     <color name="custom_light_green">#C5FC86</color>
     <color name="custom_green">#86FCAD</color>
     <color name="custom_blue">#86A4FC</color>

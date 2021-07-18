@@ -13,7 +13,6 @@
     </style>
 
     <style name="arrow_button_style">
-        <item name="android:textSize">@dimen/arrow_button_size</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

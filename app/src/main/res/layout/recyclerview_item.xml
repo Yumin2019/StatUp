@@ -56,11 +56,10 @@
             android:layout_marginEnd="@dimen/normal_margin"
             android:progress="50"
             android:progressBackgroundTint="@color/black"
-            android:progressTint="@color/purple_200"
+            android:progressTint="@color/custom_purple"
             android:scaleY="3"
             app:layout_constraintBottom_toBottomOf="@+id/item_exp_value_text_view"
             app:layout_constraintEnd_toStartOf="@+id/item_exp_value_text_view"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/item_title_text_view"
             app:layout_constraintTop_toTopOf="@+id/item_exp_value_text_view" />
 

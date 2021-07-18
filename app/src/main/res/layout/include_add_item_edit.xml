@@ -91,7 +91,7 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="3"
             app:layout_constraintBottom_toTopOf="@+id/final_level_edit_text"
             app:layout_constraintStart_toStartOf="@+id/line_vertical_035"
             app:layout_constraintTop_toTopOf="@+id/line_horizontal_050"
@@ -105,7 +105,7 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="number"
-            android:maxLength="5"
+            android:maxLength="3"
             app:layout_constraintBottom_toTopOf="@+id/line_horizontal_080"
             app:layout_constraintStart_toStartOf="@+id/line_vertical_035"
             app:layout_constraintTop_toBottomOf="@+id/item_level_text_view"
@@ -124,8 +124,8 @@
 
         <ImageView
             android:id="@+id/arrow_image_view"
-            android:layout_width="@dimen/arrow_button_size"
-            android:layout_height="@dimen/arrow_button_size"
+            android:layout_width="@dimen/spinner_arrow_size"
+            android:layout_height="@dimen/spinner_arrow_size"
             android:layout_marginEnd="@dimen/normal_margin"
             android:src="@drawable/ic_baseline_arrow_drop_down_24"
             app:layout_constraintBottom_toBottomOf="@+id/main_stat_droplist"
@@ -220,7 +220,6 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/final_level_text_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/line_vertical_035"
             app:layout_constraintTop_toTopOf="@+id/line_horizontal_050"
             app:layout_constraintWidth_max="@dimen/edit_text_max_width" />
@@ -236,7 +235,6 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/line_horizontal_080"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/line_vertical_035"
             app:layout_constraintTop_toBottomOf="@+id/initial_level_text_view"
             app:layout_constraintWidth_max="@dimen/edit_text_max_width" />

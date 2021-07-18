@@ -58,32 +58,31 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/exp_up_image_view"
+                android:id="@+id/exp_up_button"
                 android:layout_width="@dimen/stat_point_button_size"
                 android:layout_height="@dimen/stat_point_button_size"
                 android:layout_marginEnd="@dimen/normal_margin"
-                android:background="@drawable/stat_point_button_normal_drawer"
+                android:background="@drawable/stat_point_button_gray"
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="@string/str_plus"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/exp_down_image_view"
-                app:layout_constraintEnd_toStartOf="@+id/exp_down_image_view"
-                app:layout_constraintTop_toTopOf="@+id/exp_down_image_view" />
+                app:layout_constraintBottom_toBottomOf="@+id/exp_down_button"
+                app:layout_constraintEnd_toStartOf="@+id/exp_down_button"
+                app:layout_constraintTop_toTopOf="@+id/exp_down_button" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/exp_down_image_view"
+                android:id="@+id/exp_down_button"
                 android:layout_width="@dimen/stat_point_button_size"
                 android:layout_height="@dimen/stat_point_button_size"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="@dimen/normal_margin"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/stat_point_button_normal_drawer"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:background="@drawable/stat_point_button_gray"
                 android:gravity="clip_horizontal|center_horizontal"
                 android:text="@string/str_minus"
                 android:textColor="@color/white"
                 android:textSize="30sp"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -2,6 +2,9 @@ package com.example.statup
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +13,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.marginEnd
 
 class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
@@ -31,7 +35,11 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     lateinit var main_stat_spinner : Spinner
 
     // preview_include
-
+    lateinit var item_progress_bar : ProgressBar
+    lateinit var item_title_text_view : TextView
+    lateinit var item_level_text_view : TextView
+    lateinit var item_exp_up_button : Button
+    lateinit var item_exp_down_button : Button
 
     // add_item_edit_include
     // editText
@@ -55,6 +63,16 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
     var button_color_index : Int = 8
     var progressbar_color_index : Int = 8
+
+    @SuppressLint("CutPasteId")
+    private fun initPreview()
+    {
+        item_progress_bar = preview_include.findViewById(R.id.item_progress_bar)
+        item_title_text_view = preview_include.findViewById(R.id.item_title_text_view)
+        item_level_text_view = preview_include.findViewById(R.id.item_level_text_view)
+        item_exp_up_button = findViewById(R.id.exp_up_button)
+        item_exp_down_button = findViewById(R.id.exp_down_button)
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initAddItemView()
@@ -126,10 +144,31 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             inputMethodManager.showSoftInput(final_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
         }
 
+            title_edit_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+
+                if(s?.isEmpty() == true)
+                {
+                    item_title_text_view.setText("Title")
+                }
+                else
+                {
+                    item_title_text_view.setText(s.toString())
+                }
+            }
+        })
+
+
+
         initial_level_edit_text.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {  initial_level_text_view.setText(s.toString()) }
+            override fun afterTextChanged(s: Editable?) {
+                initial_level_text_view.setText(s.toString())
+                item_level_text_view.setText("Level " + s.toString())
+            }
         })
 
         final_level_edit_text.addTextChangedListener(object : TextWatcher {
@@ -170,6 +209,13 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
                         params.leftMargin = indexX * (COLOR_ITEM_SIZE + COLOR_ITEM_MARGIN)
                         button_color_selector.requestLayout()
                         button_color_index = indexX // color index
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                        {
+                            val drawable = getDrawable(getDrawableIdByColorIndex(indexX))
+
+                            item_exp_up_button.setBackgroundDrawable(drawable)
+                            item_exp_down_button.setBackgroundDrawable(drawable)
+                        }
                     }
                     // else : clicked margin
 
@@ -192,6 +238,10 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
                         params.leftMargin = indexX * (COLOR_ITEM_SIZE + COLOR_ITEM_MARGIN)
                         progressbar_color_selector.requestLayout()
                         progressbar_color_index = indexX
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                        {
+                            item_progress_bar.progressTintList = ColorStateList.valueOf(getColor(getColorId(indexX)))
+                        }
                     }
                 }
             }
@@ -242,10 +292,40 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         main_stat_spinner.setSelection(6) // Experience
     }
 
-    private fun initPreview()
+    private fun getColorId(index : Int) : Int
     {
-
+        return when(index)
+        {
+            0 -> R.color.custom_red
+            1 -> R.color.custom_orange
+            2 -> R.color.custom_yellow
+            3 -> R.color.custom_light_green
+            4 -> R.color.custom_green
+            5 -> R.color.custom_blue
+            6 -> R.color.custom_purple
+            7 -> R.color.custom_pink
+            8 -> R.color.custom_gray
+            else -> R.color.black
+        }
     }
+
+    private fun getDrawableIdByColorIndex(index : Int) : Int
+    {
+        return when(index)
+        {
+            0 -> R.drawable.stat_point_button_red
+            1 -> R.drawable.stat_point_button_orange
+            2 -> R.drawable.stat_point_button_yellow
+            3 -> R.drawable.stat_point_button_light_green
+            4 -> R.drawable.stat_point_button_green
+            5 -> R.drawable.stat_point_button_blue
+            6 -> R.drawable.stat_point_button_purple
+            7 -> R.drawable.stat_point_button_pink
+            8 -> R.drawable.stat_point_button_gray
+            else -> R.drawable.stat_point_button_normal
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {

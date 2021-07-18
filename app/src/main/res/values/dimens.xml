@@ -21,4 +21,5 @@
     <dimen name="edit_text_horizontal_margin">30dp</dimen>
     <dimen name="color_item_margin">12dp</dimen>
     <dimen name="edit_text_horizontal_padding">50dp</dimen>
+    <dimen name="spinner_arrow_size">25dp</dimen>
 </resources>
