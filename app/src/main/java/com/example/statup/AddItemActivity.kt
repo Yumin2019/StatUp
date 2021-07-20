@@ -2,12 +2,15 @@ package com.example.statup
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -15,13 +18,15 @@ import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.marginEnd
+import com.example.statup.Function.Companion.getColorId
+import com.example.statup.Function.Companion.getDrawableIdByColorIndex
+import com.example.statup.Function.Companion.isEmptyText
 
 class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 {
-
-
     companion object
     {
+        val TAG = "AddItemActivity"
         var COLOR_ITEM_SIZE = 0
         var COLOR_ITEM_MARGIN = 0
         val COLOR_ITEM_COUNT = 9
@@ -30,8 +35,8 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     // include
     lateinit var add_item_edit_include : View
     lateinit var preview_include : View
-    lateinit var scroll_view : ScrollView
 
+    lateinit var scroll_view : ScrollView
     lateinit var main_stat_spinner : Spinner
 
     // preview_include
@@ -89,7 +94,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             }
             false
         }
-
 
         title_edit_text  = add_item_edit_include.findViewById(R.id.title_edit_text)
         initial_level_edit_text  = add_item_edit_include.findViewById(R.id.item_level_text_view)
@@ -250,9 +254,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         }
 
 
-        item_add_button.setOnClickListener {
-            //
-        }
 
         // spinner for down list
         main_stat_spinner = add_item_edit_include.findViewById(R.id.main_stat_droplist)
@@ -266,6 +267,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             // Apply the adapter to the spinner
             main_stat_spinner.adapter = adapter
         }
+
         main_stat_spinner.setOnTouchListener { v, event ->
             super.onTouchEvent(event)
 
@@ -279,50 +281,69 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             false
         }
 
-        /*<item>Heath Point</item>
-        <item>Mana Point</item>
-        <item>Strength</item>
-        <item>Intelligence</item>
-        <item>Luck</item>
-        <item>Wisdom</item>
-        <item>Experience</item>
-        <item>etc.</item>*/
 
         main_stat_spinner.onItemSelectedListener = this
         main_stat_spinner.setSelection(6) // Experience
-    }
 
-    private fun getColorId(index : Int) : Int
-    {
-        return when(index)
-        {
-            0 -> R.color.custom_red
-            1 -> R.color.custom_orange
-            2 -> R.color.custom_yellow
-            3 -> R.color.custom_light_green
-            4 -> R.color.custom_green
-            5 -> R.color.custom_blue
-            6 -> R.color.custom_purple
-            7 -> R.color.custom_pink
-            8 -> R.color.custom_gray
-            else -> R.color.black
-        }
-    }
+        // item add button (we'll check if these data is right
+        item_add_button.setOnClickListener {
 
-    private fun getDrawableIdByColorIndex(index : Int) : Int
-    {
-        return when(index)
-        {
-            0 -> R.drawable.stat_point_button_red
-            1 -> R.drawable.stat_point_button_orange
-            2 -> R.drawable.stat_point_button_yellow
-            3 -> R.drawable.stat_point_button_light_green
-            4 -> R.drawable.stat_point_button_green
-            5 -> R.drawable.stat_point_button_blue
-            6 -> R.drawable.stat_point_button_purple
-            7 -> R.drawable.stat_point_button_pink
-            8 -> R.drawable.stat_point_button_gray
-            else -> R.drawable.stat_point_button_normal
+            if(isEmptyText(title_edit_text))
+            {
+                var toast = Toast.makeText(this, "Title is empty", Toast.LENGTH_SHORT)
+                toast.show()
+                /*customizing_layout_view.requestFocus()*/
+                return@setOnClickListener
+            }
+            else if(isEmptyText(initial_level_edit_text))
+            {
+                var toast = Toast.makeText(this, "level is empty", Toast.LENGTH_SHORT)
+                    toast.show()
+                final_level_text_view.requestFocus()
+                return@setOnClickListener
+            }
+            else if(isEmptyText(final_level_edit_text))
+            {
+                var toast = Toast.makeText(this, "level is empty", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
+                    toast.show()
+                final_level_edit_text.requestFocus()
+                inputMethodManager.showSoftInput(final_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+                return@setOnClickListener
+            }
+            else if(Function.textToInt(initial_level_edit_text) > Function.textToInt(final_level_edit_text))
+            {
+                var toast = Toast.makeText(this, "level is low than max", Toast.LENGTH_SHORT)
+                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
+                    toast.show()
+                initial_level_edit_text.requestFocus()
+                inputMethodManager.showSoftInput(initial_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+                return@setOnClickListener
+            }
+            // if spinner, selected one value at first and then click some values. never set null
+            // if description, it's not essential, empty or not doesn't matter
+            // if color index, same with spinner case
+
+            Log.i(TAG, "str_title : " + title_edit_text.text.toString())
+            Log.i(TAG, "str_spinner : " + main_stat_spinner.selectedItem.toString())
+            Log.i(TAG, "spinner_index : ${main_stat_spinner.selectedItemId}")
+            Log.i(TAG, "initial_level : ${Function.textToInt(initial_level_edit_text)}")
+            Log.i(TAG, "final_level : ${Function.textToInt(final_level_edit_text)}")
+            Log.i(TAG, "str_description : " + description_edit_text.text.toString())
+            Log.i(TAG, "button_color_index : $button_color_index")
+            Log.i(TAG, "progress_color_index : $progressbar_color_index")
+
+            var returnIntent = Intent()
+            returnIntent.putExtra("str_title", title_edit_text.text.toString())
+            returnIntent.putExtra("str_spinner", main_stat_spinner.selectedItem.toString())
+            returnIntent.putExtra("spinner_index", main_stat_spinner.selectedItemId)
+            returnIntent.putExtra("initial_level", Function.textToInt(initial_level_edit_text))
+            returnIntent.putExtra("final_level", Function.textToInt(final_level_edit_text))
+            returnIntent.putExtra("str_description", description_edit_text.text.toString())
+            returnIntent.putExtra("button_color_index", button_color_index)
+            returnIntent.putExtra("progress_color_index", progressbar_color_index)
+            setResult(RESULT_OK, returnIntent)
+            finish()
         }
     }
 
@@ -338,7 +359,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
         initPreview()
         initAddItemView()
-
 
     }
 

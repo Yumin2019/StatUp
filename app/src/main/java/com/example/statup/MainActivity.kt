@@ -72,10 +72,11 @@ class MainActivity : FragmentActivity()
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    // dispatch incoming activity result to the right fragment
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-    }
+    }*/
 
     /*  private var firstTime: Long = 0
     private var secondTime: Long = 0
