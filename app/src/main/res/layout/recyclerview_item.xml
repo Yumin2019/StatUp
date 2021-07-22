@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
-            android:text="@string/str_level"
+            android:text="@string/str_level_exam"
             app:layout_constraintBottom_toBottomOf="@+id/item_title_text_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="3"

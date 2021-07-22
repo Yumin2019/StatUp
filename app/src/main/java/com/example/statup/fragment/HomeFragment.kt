@@ -28,6 +28,7 @@ class HomeFragment : Fragment()
 
     lateinit var layout_manager : LinearLayoutManager
     lateinit var recycler_view : RecyclerView
+    lateinit var recycler_view_apater : RecyclerViewAdapter
 
     lateinit var add_button : FloatingActionButton
 
@@ -76,8 +77,8 @@ class HomeFragment : Fragment()
         stat_item_list.add(StatItem())
         stat_item_list.add(StatItem())
 
-        val adapter = view?.context?.let { RecyclerViewAdapter(it, stat_item_list) }
-        recycler_view.adapter = adapter
+        recycler_view_apater = RecyclerViewAdapter(view?.context, stat_item_list)
+        recycler_view.adapter = recycler_view_apater
         recycler_view.layoutManager = layout_manager
         recycler_view.setHasFixedSize(true)
     }
@@ -97,9 +98,32 @@ class HomeFragment : Fragment()
 
         when(requestCode)
         {
+            /*
+             var returnIntent = Intent()
+            returnIntent.putExtra("str_title", title_edit_text.text.toString())
+            returnIntent.putExtra("str_main_stat", main_stat_spinner.selectedItem.toString())
+            returnIntent.putExtra("main_stat_idx", main_stat_spinner.selectedItemId)
+            returnIntent.putExtra("initial_level", StatFunc.textToInt(initial_level_edit_text))
+            returnIntent.putExtra("final_level", StatFunc.textToInt(final_level_edit_text))
+            returnIntent.putExtra("str_description", description_edit_text.text.toString())
+            returnIntent.putExtra("button_color_index", button_color_index)
+            returnIntent.putExtra("progress_color_index", progressbar_color_index)
+             */
             ADD_ITEM_REQUEST ->
             {
-                val k = 0
+                var str_title = data.getStringExtra("str_title")
+                var str_main_stat = data.getStringExtra("str_main_stat")
+                var main_stat_idx = data.getIntExtra("selectedItemId", AddItemActivity.EXPERIENCE_MAIN_STAT)
+                var initial_level = data.getIntExtra("initial_level", 1)
+                var final_level = data.getIntExtra("final_level", 100)
+                var str_description = data.getStringExtra("str_description")
+                var button_color_index = data.getIntExtra("button_color_index", AddItemActivity.COLOR_ITEM_DEFAULT)
+                var progress_color_index = data.getIntExtra("progress_color_index", AddItemActivity.COLOR_ITEM_DEFAULT)
+
+                var item  = StatItem(str_title, str_main_stat, main_stat_idx, initial_level,
+                final_level, initial_level, str_description, button_color_index, progress_color_index)
+                stat_item_list.add(item)
+                recycler_view_apater.notifyDataSetChanged()
             }
         }
 

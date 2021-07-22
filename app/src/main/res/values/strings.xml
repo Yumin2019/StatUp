@@ -13,7 +13,8 @@
     // val cur_exp_value : Int = 1,
     // val max_exp_value : Int = 10
     <string name="str_stat_name">Title</string>
-    <string name="str_level">Level 1</string>
+    <string name="str_level">Level</string>
+    <string name="str_level_exam">Level 1</string>
     <string name="str_main_stat">Main Stat</string>
     <string name="str_memo">Memo</string>
     <string name="str_up">▲</string>
@@ -51,7 +52,7 @@
     <string name="hint_min_level">initial level (1)</string>
     <string name="hint_max_level">final level (100)</string>
     <string name="hint_stat_name">input title</string>
-    <string name="hint_description">your goal</string>
+    <string name="hint_description">describe your goal</string>
     <string name="hint_bar_size">input the size of the progress</string>
     <string name="hint_button_custom">select the color of these buttons</string>
     <string name="hint_progress_custom">select the color of the progress</string>

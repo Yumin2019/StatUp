@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -16,11 +15,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.marginEnd
-import com.example.statup.Function.Companion.getColorId
-import com.example.statup.Function.Companion.getDrawableIdByColorIndex
-import com.example.statup.Function.Companion.isEmptyText
+import com.example.statup.StatFunc.Companion.getColorId
+import com.example.statup.StatFunc.Companion.getDrawableIdByColorIndex
+import com.example.statup.StatFunc.Companion.isEmptyText
 
 class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 {
@@ -30,6 +28,8 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         var COLOR_ITEM_SIZE = 0
         var COLOR_ITEM_MARGIN = 0
         val COLOR_ITEM_COUNT = 9
+        val COLOR_ITEM_DEFAULT = 8
+        val EXPERIENCE_MAIN_STAT = 6
     }
 
     // include
@@ -66,8 +66,8 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     lateinit var final_cross_button : ImageView
     lateinit var description_cross_button : ImageView
 
-    var button_color_index : Int = 8
-    var progressbar_color_index : Int = 8
+    var button_color_index : Int = COLOR_ITEM_DEFAULT
+    var progressbar_color_index : Int = COLOR_ITEM_DEFAULT
 
     @SuppressLint("CutPasteId")
     private fun initPreview()
@@ -283,41 +283,29 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
 
         main_stat_spinner.onItemSelectedListener = this
-        main_stat_spinner.setSelection(6) // Experience
+        main_stat_spinner.setSelection(EXPERIENCE_MAIN_STAT) // Experience
 
         // item add button (we'll check if these data is right
         item_add_button.setOnClickListener {
 
             if(isEmptyText(title_edit_text))
             {
-                var toast = Toast.makeText(this, "Title is empty", Toast.LENGTH_SHORT)
-                toast.show()
-                /*customizing_layout_view.requestFocus()*/
+                StatFunc.createAlertDialog(this, "Title error", "Title is empty" )
                 return@setOnClickListener
             }
             else if(isEmptyText(initial_level_edit_text))
             {
-                var toast = Toast.makeText(this, "level is empty", Toast.LENGTH_SHORT)
-                    toast.show()
-                final_level_text_view.requestFocus()
+                StatFunc.createAlertDialog(this, "Level error", "initial level is empty" )
                 return@setOnClickListener
             }
             else if(isEmptyText(final_level_edit_text))
             {
-                var toast = Toast.makeText(this, "level is empty", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
-                    toast.show()
-                final_level_edit_text.requestFocus()
-                inputMethodManager.showSoftInput(final_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+                StatFunc.createAlertDialog(this, "Level error", "final level is empty" )
                 return@setOnClickListener
             }
-            else if(Function.textToInt(initial_level_edit_text) > Function.textToInt(final_level_edit_text))
+            else if(StatFunc.textToInt(initial_level_edit_text) > StatFunc.textToInt(final_level_edit_text))
             {
-                var toast = Toast.makeText(this, "level is low than max", Toast.LENGTH_SHORT)
-                    toast.setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, 0)
-                    toast.show()
-                initial_level_edit_text.requestFocus()
-                inputMethodManager.showSoftInput(initial_level_edit_text, InputMethodManager.SHOW_IMPLICIT)
+                StatFunc.createAlertDialog(this, "Level error", "final level is lower than initial level" )
                 return@setOnClickListener
             }
             // if spinner, selected one value at first and then click some values. never set null
@@ -325,20 +313,20 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             // if color index, same with spinner case
 
             Log.i(TAG, "str_title : " + title_edit_text.text.toString())
-            Log.i(TAG, "str_spinner : " + main_stat_spinner.selectedItem.toString())
-            Log.i(TAG, "spinner_index : ${main_stat_spinner.selectedItemId}")
-            Log.i(TAG, "initial_level : ${Function.textToInt(initial_level_edit_text)}")
-            Log.i(TAG, "final_level : ${Function.textToInt(final_level_edit_text)}")
+            Log.i(TAG, "str_main_stat : " + main_stat_spinner.selectedItem.toString())
+            Log.i(TAG, "main_stat_idx : ${main_stat_spinner.selectedItemId}")
+            Log.i(TAG, "initial_level : ${StatFunc.textToInt(initial_level_edit_text)}")
+            Log.i(TAG, "final_level : ${StatFunc.textToInt(final_level_edit_text)}")
             Log.i(TAG, "str_description : " + description_edit_text.text.toString())
             Log.i(TAG, "button_color_index : $button_color_index")
             Log.i(TAG, "progress_color_index : $progressbar_color_index")
 
             var returnIntent = Intent()
             returnIntent.putExtra("str_title", title_edit_text.text.toString())
-            returnIntent.putExtra("str_spinner", main_stat_spinner.selectedItem.toString())
-            returnIntent.putExtra("spinner_index", main_stat_spinner.selectedItemId)
-            returnIntent.putExtra("initial_level", Function.textToInt(initial_level_edit_text))
-            returnIntent.putExtra("final_level", Function.textToInt(final_level_edit_text))
+            returnIntent.putExtra("str_main_stat", main_stat_spinner.selectedItem.toString())
+            returnIntent.putExtra("main_stat_idx", main_stat_spinner.selectedItemId)
+            returnIntent.putExtra("initial_level", StatFunc.textToInt(initial_level_edit_text))
+            returnIntent.putExtra("final_level", StatFunc.textToInt(final_level_edit_text))
             returnIntent.putExtra("str_description", description_edit_text.text.toString())
             returnIntent.putExtra("button_color_index", button_color_index)
             returnIntent.putExtra("progress_color_index", progressbar_color_index)
