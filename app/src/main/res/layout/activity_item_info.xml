@@ -15,7 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <include
             android:id="@+id/preview_include"
             layout="@layout/stat_item"
@@ -35,7 +34,6 @@
             app:layout_constraintEnd_toEndOf="@+id/preview_include"
             app:layout_constraintStart_toStartOf="@+id/preview_include"
             app:layout_constraintTop_toBottomOf="@+id/preview_include"
-            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintWidth_max="@dimen/view_max_width">
 
 
@@ -64,7 +62,6 @@
                 android:layout_height="@dimen/stat_point_button_size"
                 android:layout_marginEnd="@dimen/normal_margin"
                 android:background="@drawable/stat_point_button_gray"
-                android:gravity="clip_horizontal|center_horizontal"
                 android:text="@string/str_plus"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -80,7 +77,6 @@
                 android:layout_marginEnd="@dimen/normal_margin"
                 android:layout_marginBottom="@dimen/normal_margin"
                 android:background="@drawable/stat_point_button_gray"
-                android:gravity="clip_horizontal|center_horizontal"
                 android:text="@string/str_minus"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -93,7 +89,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/edit_stat_fragment_scroll_view"
+        android:id="@+id/scroll_view_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -103,8 +99,8 @@
         app:layout_constraintTop_toBottomOf="@+id/preview_fragment_layout">
 
         <include
-            android:id="@+id/add_item_edit_include"
-            layout="@layout/include_add_item_edit"
+            android:id="@+id/item_info_include"
+            layout="@layout/include_item_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

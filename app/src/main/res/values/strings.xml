@@ -19,7 +19,9 @@
     <string name="str_memo">Memo</string>
     <string name="str_up">▲</string>
     <string name="str_down">▼</string>
-    <string name="str_exp">Exp 5/10</string>
+    <string name="str_exp">Exp</string>
+    <string name="str_exp_exam">Exp 5/10</string>
+    <string name="str_level_max">Level MAX</string>
     <string name="str_description">Description</string>
     <string name="str_customizing">Customizing</string>
     <string name="str_button_color">Color of buttons</string>
@@ -29,7 +31,8 @@
     <string name="normal_final_level">100</string>
 
     // Game Stat
-    // Health Point HP, Mana Point MP, Experience EXP, Strength STR, Intelligence INT, Luck LUK, Wisdom WIS, ETC
+    // Health Point HP, Mana Point MP, Experience EXP, Strength STR, Intelligence INT, Luck LUK,
+    Wisdom WIS, ETC
     <string name="str_stat_HP">HP</string>
     <string name="str_stat_MP">MP</string>
     <string name="str_stat_EXP">EXP</string>
@@ -58,11 +61,18 @@
     <string name="hint_progress_custom">select the color of the progress</string>
 
     <string name="str_info">Information</string>
-    <string name="str_add">ADD</string>
+    <string name="str_ok">OK</string>
 
     <string name="str_preview">Preview</string>
     <string name="str_plus">▲</string>
     <string name="str_minus">▼</string>
 
-
+    <string name="str_number_1">1</string>
+    <string name="str_number_100">100</string>
+    <string name="str_description_exam">I will make myself more stronger and get much of money which is so good job.
+    I will make myself more stronger and get much of money which is so good job.
+    I will make myself more stronger and get much of money which is so good job.
+    I will make myself more stronger and get much of money which is so good job.
+    I will make myself more stronger and get much of money which is so good job.
+    I will make myself more stronger and get much of money which is so good job.</string>
 </resources>

@@ -10,7 +10,9 @@
 
     // background
     <color name="background_color">#D8D6D6</color>
-    <color name="preview_background_color">#7E57C2</color>
+    <color name="preview_background_color">#B796F3</color>
+
+    <color name="light_gray">#D5D5D5</color>
 
     // customizing
     <color name="custom_red">#FF0303</color>
@@ -22,5 +24,4 @@
     <color name="custom_purple">#FFBB86FC</color>
     <color name="custom_pink">#FC86C7</color>
     <color name="custom_gray">#6C6A6E</color>
-
 </resources>

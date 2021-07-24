@@ -8,22 +8,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.statup.AddItemActivity
+import com.example.statup.ItemInfoActivity
 import com.example.statup.R
+import com.example.statup.StatFunc
 import com.example.statup.module.RecyclerViewAdapter
 import com.example.statup.module.StatItem
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+interface ItemClickListener
+{
+    fun OnItemClicked(item_idx : Int)
+}
 
-class HomeFragment : Fragment()
+class HomeFragment : Fragment(), ItemClickListener
 {
     companion object
     {
         val TAG = "HomeFragment"
         val ADD_ITEM_REQUEST = 0
+        val INFO_ITEM_REQUEST = 1
     }
 
     lateinit var layout_manager : LinearLayoutManager
@@ -71,13 +79,9 @@ class HomeFragment : Fragment()
 
         // gridLayoutManager
         layout_manager = LinearLayoutManager(view?.context)
-        stat_item_list.add(StatItem())
-        stat_item_list.add(StatItem())
-        stat_item_list.add(StatItem())
-        stat_item_list.add(StatItem())
-        stat_item_list.add(StatItem())
+        stat_item_list.add(StatItem("English", "Language", 0, 1, 100, 1, ""))
 
-        recycler_view_apater = RecyclerViewAdapter(view?.context, stat_item_list)
+        recycler_view_apater = RecyclerViewAdapter(view?.context, stat_item_list, this)
         recycler_view.adapter = recycler_view_apater
         recycler_view.layoutManager = layout_manager
         recycler_view.setHasFixedSize(true)
@@ -111,21 +115,50 @@ class HomeFragment : Fragment()
              */
             ADD_ITEM_REQUEST ->
             {
-                var str_title = data.getStringExtra("str_title")
+
+                var str_stat_name = data.getStringExtra("str_stat_name")
                 var str_main_stat = data.getStringExtra("str_main_stat")
-                var main_stat_idx = data.getIntExtra("selectedItemId", AddItemActivity.EXPERIENCE_MAIN_STAT)
+                var main_stat_idx = data.getIntExtra("main_stat_idx", AddItemActivity.EXPERIENCE_MAIN_STAT)
                 var initial_level = data.getIntExtra("initial_level", 1)
                 var final_level = data.getIntExtra("final_level", 100)
                 var str_description = data.getStringExtra("str_description")
                 var button_color_index = data.getIntExtra("button_color_index", AddItemActivity.COLOR_ITEM_DEFAULT)
                 var progress_color_index = data.getIntExtra("progress_color_index", AddItemActivity.COLOR_ITEM_DEFAULT)
 
-                var item  = StatItem(str_title, str_main_stat, main_stat_idx, initial_level,
+                var item  = StatItem(str_stat_name, str_main_stat, main_stat_idx, initial_level,
                 final_level, initial_level, str_description, button_color_index, progress_color_index)
                 stat_item_list.add(item)
                 recycler_view_apater.notifyDataSetChanged()
             }
+
+            INFO_ITEM_REQUEST ->
+            {
+
+            }
         }
 
+    }
+
+    override fun OnItemClicked(item_idx : Int)
+    {
+        var intent = Intent(context, ItemInfoActivity::class.java)
+        val bundle = ActivityOptions.makeCustomAnimation(
+            activity,
+            R.anim.slide_in_right,
+            R.anim.slide_stop
+        ).toBundle()
+
+        intent.putExtra("str_stat_name", stat_item_list[item_idx].str_stat_name)
+        intent.putExtra("str_main_stat", stat_item_list[item_idx].str_main_stat)
+        intent.putExtra("main_stat_idx", stat_item_list[item_idx].main_stat_idx)
+        intent.putExtra("initial_level", stat_item_list[item_idx].initial_level)
+        intent.putExtra("final_level", stat_item_list[item_idx].final_level)
+        intent.putExtra("cur_level", stat_item_list[item_idx].cur_level)
+        intent.putExtra("str_description", stat_item_list[item_idx].str_description)
+        intent.putExtra("button_color_index", stat_item_list[item_idx].button_color_index)
+        intent.putExtra("progress_color_index", stat_item_list[item_idx].progress_color_index)
+        intent.putExtra("cur_exp_value", stat_item_list[item_idx].cur_exp_value)
+
+        startActivityForResult(intent, INFO_ITEM_REQUEST, bundle)
     }
 }

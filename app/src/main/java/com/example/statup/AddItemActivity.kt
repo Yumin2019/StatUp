@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -32,21 +31,16 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         val EXPERIENCE_MAIN_STAT = 6
     }
 
-    // include
-    lateinit var add_item_edit_include : View
-    lateinit var preview_include : View
 
     lateinit var scroll_view : ScrollView
     lateinit var main_stat_spinner : Spinner
 
-    // preview_include
     lateinit var item_progress_bar : ProgressBar
     lateinit var item_title_text_view : TextView
     lateinit var item_level_text_view : TextView
     lateinit var item_exp_up_button : Button
     lateinit var item_exp_down_button : Button
 
-    // add_item_edit_include
     // editText
     lateinit var title_edit_text : EditText
     lateinit var initial_level_edit_text : EditText
@@ -72,9 +66,9 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     @SuppressLint("CutPasteId")
     private fun initPreview()
     {
-        item_progress_bar = preview_include.findViewById(R.id.item_progress_bar)
-        item_title_text_view = preview_include.findViewById(R.id.item_title_text_view)
-        item_level_text_view = preview_include.findViewById(R.id.item_level_text_view)
+        item_progress_bar = findViewById(R.id.item_progress_bar)
+        item_title_text_view = findViewById(R.id.item_title_text_view)
+        item_level_text_view = findViewById(R.id.item_level_text_view)
         item_exp_up_button = findViewById(R.id.exp_up_button)
         item_exp_down_button = findViewById(R.id.exp_down_button)
     }
@@ -95,22 +89,22 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             false
         }
 
-        title_edit_text  = add_item_edit_include.findViewById(R.id.title_edit_text)
-        initial_level_edit_text  = add_item_edit_include.findViewById(R.id.item_level_text_view)
-        final_level_edit_text  = add_item_edit_include.findViewById(R.id.final_level_edit_text)
-        description_edit_text  = add_item_edit_include.findViewById(R.id.description_edit_text)
-        button_color_list_view  = add_item_edit_include.findViewById(R.id.button_color_list_view)
-        progressbar_color_list_view = add_item_edit_include.findViewById(R.id.progressbar_color_list_view)
-        item_add_button  = add_item_edit_include.findViewById(R.id.item_add_button)
-        button_color_selector = add_item_edit_include.findViewById(R.id.button_color_selector_image_view)
-        progressbar_color_selector = add_item_edit_include.findViewById(R.id.progressbar_color_selector_image_view)
-        initial_level_text_view = add_item_edit_include.findViewById(R.id.initial_level_text_view)
-        final_level_text_view = add_item_edit_include.findViewById(R.id.final_level_text_view)
+        title_edit_text  = findViewById(R.id.title_edit_text)
+        initial_level_edit_text  = findViewById(R.id.initial_level_edit_text)
+        final_level_edit_text  = findViewById(R.id.final_level_edit_text)
+        description_edit_text  = findViewById(R.id.description_edit_text)
+        button_color_list_view  = findViewById(R.id.button_color_list_view)
+        progressbar_color_list_view = findViewById(R.id.progressbar_color_list_view)
+        item_add_button  = findViewById(R.id.item_add_button)
+        button_color_selector = findViewById(R.id.button_color_selector_image_view)
+        progressbar_color_selector = findViewById(R.id.progressbar_color_selector_image_view)
+        initial_level_text_view = findViewById(R.id.initial_level_text_view)
+        final_level_text_view = findViewById(R.id.final_level_text_view)
 
-        title_cross_button = add_item_edit_include.findViewById(R.id.title_cross_button)
-        initial_cross_button = add_item_edit_include.findViewById(R.id.initial_level_cross_button)
-        final_cross_button = add_item_edit_include.findViewById(R.id.final_level_cross_button)
-        description_cross_button = add_item_edit_include.findViewById(R.id.description_cross_button)
+        title_cross_button = findViewById(R.id.title_cross_button)
+        initial_cross_button = findViewById(R.id.initial_level_cross_button)
+        final_cross_button = findViewById(R.id.final_level_cross_button)
+        description_cross_button = findViewById(R.id.description_cross_button)
 
 
         title_cross_button.setOnClickListener {
@@ -131,7 +125,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
         // calculate the size of color item. it depends on the device's size
         button_color_list_view.post {
-            val color_view = add_item_edit_include.findViewById<View>(R.id.button_color_1)
+            val color_view = findViewById<View>(R.id.button_color_1)
             COLOR_ITEM_MARGIN = color_view.marginEnd
             // c M c M c
             COLOR_ITEM_SIZE = (button_color_list_view.right - button_color_list_view.left) - COLOR_ITEM_MARGIN * (COLOR_ITEM_COUNT - 1)
@@ -182,7 +176,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         })
 
         // customizing_layout's onTouch func (in this we calculate what kind of color people select)
-        val customizing_layout_view : View = add_item_edit_include.findViewById(R.id.customizing_layout)
+        val customizing_layout_view : View = findViewById(R.id.customizing_layout)
         customizing_layout_view.setOnTouchListener { view, motionEvent ->
 
             if(motionEvent.action == MotionEvent.ACTION_DOWN)
@@ -256,7 +250,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
 
         // spinner for down list
-        main_stat_spinner = add_item_edit_include.findViewById(R.id.main_stat_droplist)
+        main_stat_spinner = findViewById(R.id.main_stat_droplist)
         ArrayAdapter.createFromResource(
             this,
             R.array.main_stat_array,
@@ -293,17 +287,17 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
                 StatFunc.createAlertDialog(this, "Title error", "Title is empty" )
                 return@setOnClickListener
             }
-            else if(isEmptyText(initial_level_edit_text))
+            else if(isEmptyText(initial_level_text_view))
             {
                 StatFunc.createAlertDialog(this, "Level error", "initial level is empty" )
                 return@setOnClickListener
             }
-            else if(isEmptyText(final_level_edit_text))
+            else if(isEmptyText(final_level_text_view))
             {
                 StatFunc.createAlertDialog(this, "Level error", "final level is empty" )
                 return@setOnClickListener
             }
-            else if(StatFunc.textToInt(initial_level_edit_text) > StatFunc.textToInt(final_level_edit_text))
+            else if(StatFunc.textToInt(initial_level_text_view) > StatFunc.textToInt(final_level_text_view))
             {
                 StatFunc.createAlertDialog(this, "Level error", "final level is lower than initial level" )
                 return@setOnClickListener
@@ -312,21 +306,21 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             // if description, it's not essential, empty or not doesn't matter
             // if color index, same with spinner case
 
-            Log.i(TAG, "str_title : " + title_edit_text.text.toString())
+            Log.i(TAG, "str_stat_name : " + title_edit_text.text.toString())
             Log.i(TAG, "str_main_stat : " + main_stat_spinner.selectedItem.toString())
             Log.i(TAG, "main_stat_idx : ${main_stat_spinner.selectedItemId}")
-            Log.i(TAG, "initial_level : ${StatFunc.textToInt(initial_level_edit_text)}")
-            Log.i(TAG, "final_level : ${StatFunc.textToInt(final_level_edit_text)}")
+            Log.i(TAG, "initial_level : ${StatFunc.textToInt(initial_level_text_view)}")
+            Log.i(TAG, "final_level : ${StatFunc.textToInt(final_level_text_view)}")
             Log.i(TAG, "str_description : " + description_edit_text.text.toString())
             Log.i(TAG, "button_color_index : $button_color_index")
             Log.i(TAG, "progress_color_index : $progressbar_color_index")
 
             var returnIntent = Intent()
-            returnIntent.putExtra("str_title", title_edit_text.text.toString())
+            returnIntent.putExtra("str_stat_name", title_edit_text.text.toString())
             returnIntent.putExtra("str_main_stat", main_stat_spinner.selectedItem.toString())
             returnIntent.putExtra("main_stat_idx", main_stat_spinner.selectedItemId)
-            returnIntent.putExtra("initial_level", StatFunc.textToInt(initial_level_edit_text))
-            returnIntent.putExtra("final_level", StatFunc.textToInt(final_level_edit_text))
+            returnIntent.putExtra("initial_level", StatFunc.textToInt(initial_level_text_view))
+            returnIntent.putExtra("final_level", StatFunc.textToInt(final_level_text_view))
             returnIntent.putExtra("str_description", description_edit_text.text.toString())
             returnIntent.putExtra("button_color_index", button_color_index)
             returnIntent.putExtra("progress_color_index", progressbar_color_index)
@@ -335,15 +329,10 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
-
-        // include
-        add_item_edit_include = findViewById(R.id.add_item_edit_include)
-        preview_include = findViewById(R.id.preview_include)
 
         initPreview()
         initAddItemView()
