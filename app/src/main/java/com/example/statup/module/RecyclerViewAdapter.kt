@@ -66,7 +66,7 @@ class RecyclerViewAdapter(private val context : Context,
             viewHolder.level_text_view.text = ("Level " + dataSet[position].cur_level)
 
         // progress bar
-        viewHolder.progress_bar.progress = 5 // dataSet[position].cur_exp_value
+        viewHolder.progress_bar.progress = dataSet[position].cur_exp_value * 1000
         viewHolder.progress_bar.progressTintList =
             ColorStateList.valueOf(getColor(context, getColorId(dataSet[position].progress_color_index)))
 

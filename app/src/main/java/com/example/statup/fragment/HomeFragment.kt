@@ -36,7 +36,7 @@ class HomeFragment : Fragment(), ItemClickListener
 
     lateinit var layout_manager : LinearLayoutManager
     lateinit var recycler_view : RecyclerView
-    lateinit var recycler_view_apater : RecyclerViewAdapter
+    lateinit var recycler_view_adapter : RecyclerViewAdapter
 
     lateinit var add_button : FloatingActionButton
 
@@ -81,8 +81,8 @@ class HomeFragment : Fragment(), ItemClickListener
         layout_manager = LinearLayoutManager(view?.context)
         stat_item_list.add(StatItem("English", "Language", 0, 1, 100, 1, ""))
 
-        recycler_view_apater = RecyclerViewAdapter(view?.context, stat_item_list, this)
-        recycler_view.adapter = recycler_view_apater
+        recycler_view_adapter = RecyclerViewAdapter(view?.context, stat_item_list, this)
+        recycler_view.adapter = recycler_view_adapter
         recycler_view.layoutManager = layout_manager
         recycler_view.setHasFixedSize(true)
     }
@@ -115,7 +115,6 @@ class HomeFragment : Fragment(), ItemClickListener
              */
             ADD_ITEM_REQUEST ->
             {
-
                 var str_stat_name = data.getStringExtra("str_stat_name")
                 var str_main_stat = data.getStringExtra("str_main_stat")
                 var main_stat_idx = data.getIntExtra("main_stat_idx", AddItemActivity.EXPERIENCE_MAIN_STAT)
@@ -128,12 +127,16 @@ class HomeFragment : Fragment(), ItemClickListener
                 var item  = StatItem(str_stat_name, str_main_stat, main_stat_idx, initial_level,
                 final_level, initial_level, str_description, button_color_index, progress_color_index)
                 stat_item_list.add(item)
-                recycler_view_apater.notifyDataSetChanged()
+                recycler_view_adapter.notifyItemInserted(stat_item_list.size - 1)
             }
 
             INFO_ITEM_REQUEST ->
             {
+                val item_index = data.getIntExtra("item_index", 0)
 
+                stat_item_list[item_index].cur_exp_value = data.getIntExtra("cur_exp_value", 0)
+                stat_item_list[item_index].cur_level = data.getIntExtra("cur_level", 1)
+                recycler_view_adapter.notifyItemChanged(item_index)
             }
         }
 
@@ -158,7 +161,8 @@ class HomeFragment : Fragment(), ItemClickListener
         intent.putExtra("button_color_index", stat_item_list[item_idx].button_color_index)
         intent.putExtra("progress_color_index", stat_item_list[item_idx].progress_color_index)
         intent.putExtra("cur_exp_value", stat_item_list[item_idx].cur_exp_value)
-
+        intent.putExtra("item_index", item_idx)
+        
         startActivityForResult(intent, INFO_ITEM_REQUEST, bundle)
     }
 }

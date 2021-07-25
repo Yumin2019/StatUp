@@ -24,11 +24,26 @@ data class StatItem(
     var max_exp_value : Int = 10
 )
 {
+
     fun isFinalLevel() : Boolean {return (final_level == initial_level)}
     fun plusExp()
     {
         ++cur_exp_value
-        if(cur_exp_value >= max_exp_value)
+    }
+
+    // we don't allow the user to down below levels (like game)
+    fun minusExp()
+    {
+        --cur_exp_value
+    }
+
+    fun checkExp()
+    {
+        if(cur_exp_value < 0)
+        {
+            cur_exp_value = 0
+        }
+        else if(cur_exp_value >= max_exp_value)
         {
             cur_exp_value = 0
             ++cur_level
@@ -38,16 +53,6 @@ data class StatItem(
                 cur_level = final_level
                 cur_exp_value = max_exp_value
             }
-        }
-    }
-
-    // we don't allow the user to down below levels (like game)
-    fun minusExp()
-    {
-        --cur_exp_value
-        if(cur_exp_value < 0)
-        {
-            cur_exp_value = 0
         }
     }
 }

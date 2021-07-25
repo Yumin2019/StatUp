@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">StatUp</string>
 
     // items
@@ -49,6 +49,7 @@
     <string name="str_stat_Intelligence">Intelligence</string>
     <string name="str_stat_Luck">Luck</string>
     <string name="str_stat_Wisdom">Wisdom</string>
+    <string name="str_stat_language">Language</string>
     <string name="str_stat_Etc.">etc.</string>
 
     // hints
@@ -75,4 +76,10 @@
     I will make myself more stronger and get much of money which is so good job.
     I will make myself more stronger and get much of money which is so good job.
     I will make myself more stronger and get much of money which is so good job.</string>
+
+    // dialog messages
+    <string name="str_warning">Warning</string>
+    <string name="str_discard_message">you want to discard draft?</string>
+    <string name="str_cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="str_discard">DISCARD</string>
 </resources>

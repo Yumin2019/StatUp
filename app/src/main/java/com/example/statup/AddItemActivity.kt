@@ -2,6 +2,7 @@ package com.example.statup
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
@@ -18,6 +19,8 @@ import androidx.core.view.marginEnd
 import com.example.statup.StatFunc.Companion.getColorId
 import com.example.statup.StatFunc.Companion.getDrawableIdByColorIndex
 import com.example.statup.StatFunc.Companion.isEmptyText
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.dialog.MaterialDialogs
 
 class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 {
@@ -28,7 +31,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         var COLOR_ITEM_MARGIN = 0
         val COLOR_ITEM_COUNT = 9
         val COLOR_ITEM_DEFAULT = 8
-        val EXPERIENCE_MAIN_STAT = 6
+        const val EXPERIENCE_MAIN_STAT = 6
     }
 
 
@@ -327,6 +330,33 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
             setResult(RESULT_OK, returnIntent)
             finish()
         }
+    }
+
+    override fun onBackPressed()
+    {
+        // if some views changed, we would message to user
+
+        if(title_edit_text.text.toString() != getString(R.string.str_stat_name) ||
+            main_stat_spinner.selectedItemId.toInt() != EXPERIENCE_MAIN_STAT ||
+            initial_level_text_view.text.toString() != getString(R.string.str_number_1) ||
+            final_level_text_view.text.toString() != getString(R.string.str_number_100) ||
+            !description_edit_text.text.isEmpty() ||
+            progressbar_color_index != COLOR_ITEM_DEFAULT ||
+                button_color_index != COLOR_ITEM_DEFAULT )
+        {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.str_warning)
+                .setMessage(R.string.str_discard_message)
+                .setNegativeButton(R.string.str_cancel
+                ) { dialog, which -> }
+                .setPositiveButton(R.string.str_discard
+                ) { dialog, which ->
+                    // when you want to go out of this activity
+                    super.onBackPressed()
+                }
+                .show()
+        } else
+            super.onBackPressed()
     }
 
     override fun onCreate(savedInstanceState: Bundle?)

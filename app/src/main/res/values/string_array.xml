@@ -8,6 +8,8 @@
         <item>Luck</item>
         <item>Wisdom</item>
         <item>Experience</item>
+        <item>Language</item>
         <item>etc.</item>
     </string-array>
 </resources>
+
