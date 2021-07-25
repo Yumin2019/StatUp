@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -132,11 +133,36 @@ class HomeFragment : Fragment(), ItemClickListener
 
             INFO_ITEM_REQUEST ->
             {
+                val event_code = data.getIntExtra("event", -1)
                 val item_index = data.getIntExtra("item_index", 0)
 
-                stat_item_list[item_index].cur_exp_value = data.getIntExtra("cur_exp_value", 0)
-                stat_item_list[item_index].cur_level = data.getIntExtra("cur_level", 1)
-                recycler_view_adapter.notifyItemChanged(item_index)
+                when(event_code)
+                {
+                    ItemInfoActivity.ITEM_CHANGED_EVENT ->
+                    {
+                        // exp, level changed
+                        Log.i(TAG, "ITEM_CHANGED_EVENT")
+                        stat_item_list[item_index].cur_exp_value = data.getIntExtra("cur_exp_value", 0)
+                        stat_item_list[item_index].cur_level = data.getIntExtra("cur_level", 1)
+                        recycler_view_adapter.notifyItemChanged(item_index)
+                    }
+
+                    ItemInfoActivity.ITEM_EDITED_EVENT ->
+                    {
+                        Log.i(TAG, "ITEM_EDITED_EVENT")
+
+                    }
+
+                    ItemInfoActivity.ITEM_DELETE_EVENT ->
+                    {
+                        // delete this item in
+                        Log.i(TAG, "ITEM_DELETE_EVENT")
+                        stat_item_list.removeAt(item_index)
+                        recycler_view_adapter.notifyItemRemoved(item_index)
+                    }
+                    else -> return
+                }
+
             }
         }
 

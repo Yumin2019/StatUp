@@ -26,7 +26,8 @@
     <string name="str_customizing">Customizing</string>
     <string name="str_button_color">Color of buttons</string>
     <string name="str_progress_color">Color of this progressbar</string>
-
+    <string name="str_edit">EDIT</string>
+    <string name="str_delete">DELETE</string>
     <string name="normal_initial_level">1</string>
     <string name="normal_final_level">100</string>
 
@@ -82,4 +83,6 @@
     <string name="str_discard_message">you want to discard draft?</string>
     <string name="str_cancel" tools:ignore="ButtonCase">CANCEL</string>
     <string name="str_discard">DISCARD</string>
+
+    <string name="str_delete_message">you want to delete this item?</string>
 </resources>

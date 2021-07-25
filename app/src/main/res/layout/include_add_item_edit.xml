@@ -584,12 +584,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <android.widget.Button
-        android:id="@+id/item_add_button"
+        android:id="@+id/item_ok_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/big_margin"
+        android:layout_marginStart="@dimen/normal_margin"
         android:layout_marginTop="@dimen/big_margin"
-        android:layout_marginEnd="@dimen/big_margin"
         android:layout_marginBottom="@dimen/big_margin"
         android:background="@drawable/button_rectangle_style_pink"
         android:text="@string/str_ok"
@@ -598,7 +597,6 @@
         android:textSize="@dimen/big_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/customizing_layout"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/customizing_layout"
         app:layout_constraintTop_toBottomOf="@+id/customizing_layout"
         app:layout_constraintVertical_weight="1"

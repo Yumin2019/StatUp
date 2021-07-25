@@ -34,8 +34,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         const val EXPERIENCE_MAIN_STAT = 6
     }
 
-
-    lateinit var scroll_view : ScrollView
     lateinit var main_stat_spinner : Spinner
 
     lateinit var item_progress_bar : ProgressBar
@@ -53,15 +51,10 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     lateinit var final_level_text_view : TextView
     lateinit var button_color_list_view : View
     lateinit var progressbar_color_list_view : View
-    lateinit var item_add_button : Button
     lateinit var button_color_selector : ImageView
     lateinit var progressbar_color_selector : ImageView
     lateinit var inputMethodManager : InputMethodManager
 
-    lateinit var title_cross_button : ImageView
-    lateinit var initial_cross_button : ImageView
-    lateinit var final_cross_button : ImageView
-    lateinit var description_cross_button : ImageView
 
     var button_color_index : Int = COLOR_ITEM_DEFAULT
     var progressbar_color_index : Int = COLOR_ITEM_DEFAULT
@@ -79,8 +72,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     @SuppressLint("ClickableViewAccessibility")
     private fun initAddItemView()
     {
-        scroll_view = findViewById(R.id.edit_stat_fragment_scroll_view)
-        scroll_view.setOnTouchListener { v, event ->
+        findViewById<ScrollView>(R.id.edit_stat_fragment_scroll_view).setOnTouchListener { v, event ->
             super.onTouchEvent(event)
 
             if(event?.action == MotionEvent.ACTION_DOWN)
@@ -98,28 +90,22 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         description_edit_text  = findViewById(R.id.description_edit_text)
         button_color_list_view  = findViewById(R.id.button_color_list_view)
         progressbar_color_list_view = findViewById(R.id.progressbar_color_list_view)
-        item_add_button  = findViewById(R.id.item_add_button)
         button_color_selector = findViewById(R.id.button_color_selector_image_view)
         progressbar_color_selector = findViewById(R.id.progressbar_color_selector_image_view)
         initial_level_text_view = findViewById(R.id.initial_level_text_view)
         final_level_text_view = findViewById(R.id.final_level_text_view)
 
-        title_cross_button = findViewById(R.id.title_cross_button)
-        initial_cross_button = findViewById(R.id.initial_level_cross_button)
-        final_cross_button = findViewById(R.id.final_level_cross_button)
-        description_cross_button = findViewById(R.id.description_cross_button)
-
-
-        title_cross_button.setOnClickListener {
+        // cross button
+        findViewById<ImageView>(R.id.title_cross_button).setOnClickListener {
             title_edit_text.setText("")
         }
-        initial_cross_button.setOnClickListener {
+        findViewById<ImageView>(R.id.initial_level_cross_button).setOnClickListener {
             initial_level_edit_text.setText("")
         }
-        final_cross_button.setOnClickListener {
+        findViewById<ImageView>(R.id.final_level_cross_button).setOnClickListener {
             final_level_edit_text.setText("")
         }
-        description_cross_button.setOnClickListener {
+        findViewById<ImageView>(R.id.description_cross_button).setOnClickListener {
             description_edit_text.setText("")
         }
 
@@ -160,8 +146,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
                 }
             }
         })
-
-
 
         initial_level_edit_text.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -283,7 +267,7 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
         main_stat_spinner.setSelection(EXPERIENCE_MAIN_STAT) // Experience
 
         // item add button (we'll check if these data is right
-        item_add_button.setOnClickListener {
+        findViewById<Button>(R.id.item_ok_button).setOnClickListener {
 
             if(isEmptyText(title_edit_text))
             {
@@ -335,7 +319,6 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
     override fun onBackPressed()
     {
         // if some views changed, we would message to user
-
         if(title_edit_text.text.toString() != getString(R.string.str_stat_name) ||
             main_stat_spinner.selectedItemId.toInt() != EXPERIENCE_MAIN_STAT ||
             initial_level_text_view.text.toString() != getString(R.string.str_number_1) ||
@@ -366,7 +349,18 @@ class AddItemActivity : Activity(), AdapterView.OnItemSelectedListener
 
         initPreview()
         initAddItemView()
+        initDataFromIntent()
+    }
 
+    private fun initDataFromIntent()
+    {
+        // if it's data
+        val event_code = intent.getIntExtra("event", -1)
+
+        if(event_code != -1)
+        {
+            
+        }
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean
